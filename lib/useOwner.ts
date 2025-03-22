@@ -15,12 +15,19 @@ function useOwner() {
     user && query(collectionGroup(db,"rooms"),where("roomId","==",room.id))
  )
  console.log("ownerrr",user);
+ userInRooms?.docs.forEach((doc) => console.log("datadatdaa",doc.data()));
+ 
  useEffect(()=>{
    if(userInRooms?.docs && userInRooms.docs.length > 0){
       const owners = userInRooms.docs.filter((doc)=> doc.data().role==="Owner");
-
-      if(owners.some((owner)=>owner.data().userId===user?.emailAddresses[0].toString())){
-         setIsOwner(true);
+     
+      if (
+        owners.some(
+          (owner) => owner.data().UserId === user?.emailAddresses[0]?.toString()
+        )
+      ) {
+        setIsOwner(true);
+     
       }
    };
 
@@ -28,6 +35,5 @@ function useOwner() {
 
  return isowner;
 }
-
 
 export default useOwner
