@@ -2,19 +2,11 @@
 
 
 import type { Metadata } from "next";
-import { ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser} from '@clerk/nextjs'
-
+import { ClerkProvider} from '@clerk/nextjs'
 import "./globals.css";
 import Header from "@/components/Header";
-import { Sidebar } from "lucide-react";
 import SideBar from "@/components/Sidebar";
-import { Suspense } from "react";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import { Toaster } from "@/components/ui/sonner";
 
 
 
@@ -42,6 +34,7 @@ export default function RootLayout({
         <SideBar/>
           <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">{ children}</div>
           </div>
+          <Toaster position="top-center"/>
           </body>
     </html>
     </ClerkProvider>

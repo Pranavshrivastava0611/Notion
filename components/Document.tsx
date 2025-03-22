@@ -5,17 +5,19 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/Firebase";
-import { title } from "process";
 import { useDocument, useDocumentData } from "react-firebase-hooks/firestore";
 import Editor from "./Editor";
 import useOwner from "@/lib/useOwner";
+import DeleteDocument from "./DeleteDocument";
+import Inviteuser from "./Inviteuser";
+import ManageUsers from "./ManageUsers";
 
 function Document({ id }: { id: string }) {
     const [input , setInput] = useState("");
     const [isUpdating, startTransition] = useTransition();
     const [data,loading,error] = useDocumentData(doc(db,"Documents",id));
     const isOwner = useOwner();
-    console.log("ownerr",isOwner);
+    console.log("ownerrdvvv",isOwner);
     useEffect(()=>{
         setInput(data?.title)
     },[data])
@@ -42,15 +44,17 @@ function Document({ id }: { id: string }) {
           {
             isOwner && (
               <>
-              <p>I am the owner</p>
+              <Inviteuser/>
+              <DeleteDocument/>
               </>
             )
           }
         </form>
       </div>
 
-      <div>
+      <div className="flex max-w-6xl mx-auto justify-between items-center mb-5 ">
         {/*manage user  */}
+          <ManageUsers/>
 
         {/* avatars of the users  */}
       </div>

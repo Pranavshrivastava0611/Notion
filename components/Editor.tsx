@@ -76,4 +76,8 @@ function Editor() {
       </div>
 
       <BlockNote doc={doc} provider={provider} darkMode={darkMode} />
-    </div
+    </div>
+  );
+}
+
+export default Editor;
