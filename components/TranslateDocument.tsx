@@ -1,14 +1,15 @@
 "use client"
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from './ui/dialog';
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as Y from "yjs";
 import { Button } from './ui/button';
 import { DialogHeader } from './ui/dialog';
 import { useState } from 'react';
 import { useTransition } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { LanguagesIcon } from 'lucide-react';
+import { BotIcon, LanguagesIcon } from 'lucide-react';
 import { toast } from 'sonner';
+import Markdown from "react-markdown"
 
 type Language =
   | "english"
@@ -48,7 +49,7 @@ function TranslateDocument({doc} : {doc : Y.Doc}) {
 
         startTransition(async ()=>{
             const documentData = doc.get("document-store").toJSON();
-
+            try{
             const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/translateDocument`,{
               method : "POST",
               headers : {
@@ -67,10 +68,18 @@ function TranslateDocument({doc} : {doc : Y.Doc}) {
               toast.success("Translated Summary Successfully");
 
             }else{
+              console.log(res)
               console.log("chud gye guru")
             }
+          }catch(error){
+            console.log("error in the translating the document" , error);
+          }
         })
     };
+
+    useEffect(()=>{
+      console.log("summary",summary);
+    },[summary]);
                
 
   return (
@@ -91,6 +100,17 @@ function TranslateDocument({doc} : {doc : Y.Doc}) {
           {question && <p className='mt-5 text-gray-500'> Q: {question}</p>}
         </DialogHeader>
 
+          {summary &&  (
+            <div className='flex flex-col items-start max-h-96 overflow-y-scroll gap-2 p-5 bg-gray-100'>
+              <div className='flex'>
+                <BotIcon className='w-10 flex-shrink-0'/>
+                <p className='font-bold'>
+                  GPT {isPending ? "is thinking..." : "Says"}
+                </p>
+              </div>
+              <div > {isPending ? "Thinking..." : <Markdown>{summary}</Markdown>}</div>
+            </div>
+          )}
         <form onSubmit={handleAskQuestion} className="flex  gap-2">
           <Select value={language} onValueChange={(value)=>setLanguage(value)}> 
             <SelectTrigger className='w-full'>

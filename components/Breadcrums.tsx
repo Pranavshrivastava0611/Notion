@@ -30,11 +30,9 @@ function Breadcrums() {
             const href = `/${segments.slice(0,index+1).join("/")}`
             const isLast = index === segments.length-1
             console.log("href : ",href);
-
-
                 return (
                         <>
-                        <BreadcrumbSeparator/>
+                        <BreadcrumbSeparator key={index}/>
                         <BreadcrumbItem>
                         {isLast? (
                             <BreadcrumbPage>{segment}</BreadcrumbPage>

@@ -11,6 +11,7 @@ import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "@/lib/stringToColor";
 import TranslateDocument from "./TranslateDocument";
+import ChatToDocument from "./ChatToDocument ";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -66,6 +67,7 @@ function Editor() {
     <div className="max-w-6xl mx-auto">
       <div className="flex gap-2 items-center justify-end mb-10">
         <TranslateDocument doc={doc}/>
+        <ChatToDocument doc={doc}/>
 
         <button
           className={`hover:text-white ${

@@ -66,8 +66,8 @@ function ManageUsers() {
         <hr className='my-2'/>
 
         <div className='flex flex-col space-y-2'>
-            {userInRooms?.docs.map((doc)=> (
-                <div key={doc.data().Userid} className='flex justify-between items-center'>
+            {userInRooms?.docs.map((doc,index)=> (
+                <div key={index} className='flex justify-between items-center'>
                     <p className='font-light'>{doc.data().UserId === user?.emailAddresses[0].toString() ? `You (${doc.data().UserId})` : doc.data().UserId}</p>
 
                     <div className='flex items-center gap-2'>
