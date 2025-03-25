@@ -22,9 +22,6 @@ import { collectionGroup, query, where } from 'firebase/firestore';
 import { db } from '@/Firebase';
 
 
-
-  
-
 function ManageUsers() {
     const {user} = useUser();
     const isOwner = useOwner();
@@ -38,11 +35,12 @@ function ManageUsers() {
      )
     
 
-    const handleDelete =  (userId : string)=>{
+    const handleDelete =  (userId : string) =>{
         startTransition(async ()=>{
             if(!user) return ;
 
-            const { success } = await removeUserFromDocument(room.id , userId);
+            const { success }: { success: boolean} =
+              await removeUserFromDocument(room.id, userId);
 
             if(success){
                 toast.success("User removed from room successfully");
@@ -75,9 +73,11 @@ function ManageUsers() {
                     <div className='flex items-center gap-2'>
                         <Button variant={"outline"}>{doc.data().role}</Button>
                         {isOwner && (
-                            <Button variant={"destructive"} onClick={handleDelete(doc.data().UserId)}  disabled={isPending} size={"sm"}>
-                                {isPending ? "Removing" : "X"}
-                            </Button>
+                          <>
+                            { doc.data().role!=="Owner" && <Button variant={"destructive"} onClick={()=> handleDelete(doc.data().serId)}  disabled={isPending} size={"sm"}>
+                                {isPending ? "Removing..." : "X"}
+                            </Button>}
+                            </>
                         )}
 
                     </div>

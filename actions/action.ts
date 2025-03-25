@@ -94,9 +94,10 @@ export async function removeUserFromDocument(roomId : string , email : string) {
 
   try{  
         await adminDb.collection("User").doc(email).collection("rooms").doc(roomId).delete();
-        return {success : true};
+        return {success  : true} ;
   }catch(error){
     console.log("error in removing the user from the document" ,error)
+    return {success : false};
   }
 }
 

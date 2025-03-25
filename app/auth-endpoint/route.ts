@@ -8,12 +8,12 @@ export async function POST(req : NextRequest) {
     await auth.protect();
     const {sessionClaims} = await auth();
     const {room} = await req.json()
-
+    
     const session = liveblocks.prepareSession(sessionClaims?.email!,{
         userInfo : {
-            name : sessionClaims?.name!,
+            name : sessionClaims?.Full_name! as string,
             email : sessionClaims?.email!,
-            avatar : sessionClaims?.avatar!
+            avatar : sessionClaims?.image!
         }
     });
 

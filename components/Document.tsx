@@ -11,6 +11,7 @@ import useOwner from "@/lib/useOwner";
 import DeleteDocument from "./DeleteDocument";
 import Inviteuser from "./Inviteuser";
 import ManageUsers from "./ManageUsers";
+import Avatars from "./Avatars";
 
 function Document({ id }: { id: string }) {
     const [input , setInput] = useState("");
@@ -55,8 +56,7 @@ function Document({ id }: { id: string }) {
       <div className="flex max-w-6xl mx-auto justify-between items-center mb-5 ">
         {/*manage user  */}
           <ManageUsers/>
-
-        {/* avatars of the users  */}
+          <Avatars/>
       </div>
 
       <div>{/*collabortive work  */}

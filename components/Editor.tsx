@@ -10,6 +10,7 @@ import { useCreateBlockNote } from "@blocknote/react";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "@/lib/stringToColor";
+import TranslateDocument from "./TranslateDocument";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -64,6 +65,8 @@ function Editor() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex gap-2 items-center justify-end mb-10">
+        <TranslateDocument doc={doc}/>
+
         <button
           className={`hover:text-white ${
             darkMode ? "text-gray-300 bg-gray-700 hover:bg-gray-100 hover:text-gray-700" 
