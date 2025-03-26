@@ -2,18 +2,17 @@ import { initializeApp,getApp,getApps} from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBmQ1nETKeK57d1ZNd29wcCazYp0iykwS0",
-    authDomain: "notion-clone-587ac.firebaseapp.com",
-    projectId: "notion-clone-587ac",
-    storageBucket: "notion-clone-587ac.appspot.com",
-    messagingSenderId: "990339009144",
-    appId: "1:990339009144:web:c6394896af85ea2ad2bb8d",
-    measurementId: "G-VVBWRF5LRK"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
   };
 
 
   // inittaliation checking of the app ; // next js double initilaizse checking
-
   const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
  const db = getFirestore(app);
  
