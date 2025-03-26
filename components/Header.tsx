@@ -2,7 +2,6 @@
 
 
 import React from 'react'
-import {SWRConfig} from 'swr'
 import {SignedIn,SignInButton,SignOutButton,SignedOut,UserButton} from '@clerk/nextjs'
 import { useUser } from '@clerk/clerk-react'
 import Breadcrums from "./Breadcrums"

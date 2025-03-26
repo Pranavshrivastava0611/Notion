@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { Button } from './ui/button'
-import { db } from '@/Firebase'
-import { adminDb,adminapp } from '@/firebase-admin'
+
+
 import { useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import {createNewUser} from '../actions/action'

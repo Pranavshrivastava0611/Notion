@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useTransition } from 'react'
+import React, {  useTransition } from 'react'
 import {
     Dialog,
     DialogContent,
@@ -7,11 +7,11 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-    DialogFooter
+ 
   } from "@/components/ui/dialog"
   import { useState } from 'react';
   import { Button } from './ui/button';
-import { usePathname ,useRouter} from 'next/navigation';
+
 import {removeUserFromDocument } from '@/actions/action';
 import { toast } from "sonner";
 import { useUser } from '@clerk/nextjs';

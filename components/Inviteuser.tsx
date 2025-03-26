@@ -7,11 +7,11 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-    DialogFooter
+  
   } from "@/components/ui/dialog"
   import { useState } from 'react';
   import { Button } from './ui/button';
-import { usePathname ,useRouter} from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {inviteUserToDocument } from '@/actions/action';
 import { toast } from "sonner";
 import { Input } from './ui/input';

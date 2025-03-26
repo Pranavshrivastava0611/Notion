@@ -2,10 +2,10 @@
 import { useUser } from '@clerk/nextjs'
 import { useRoom } from '@liveblocks/react/suspense';
 import { collectionGroup, query, where } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { db } from '@/Firebase';
-import { auth } from '@clerk/nextjs/server';
+
 
 function useOwner() {
  const {user} = useUser();

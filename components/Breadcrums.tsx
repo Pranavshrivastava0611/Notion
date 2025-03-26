@@ -9,7 +9,6 @@ import {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
 } from "../components/ui/breadcrumb";
 
 function Breadcrums() {

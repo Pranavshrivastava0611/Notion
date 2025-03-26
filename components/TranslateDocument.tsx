@@ -41,7 +41,11 @@ function TranslateDocument({doc} : {doc : Y.Doc}) {
     const [isPending, startTransition] = useTransition();
     const [language, setLanguage] = useState<string>("english");
     const [summary,setSummary] = useState("");
-    const [question, setQuestion] = useState("");
+    
+    // eslint-disable-next-line no-unused-vars
+const [question, setQuestion] = useState("");
+
+    
 
     const handleAskQuestion = async ( e: React.FormEvent) => {
         e.preventDefault();

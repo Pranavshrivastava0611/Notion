@@ -1,14 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Button } from "./ui/button";
 import NewButton from "./NewButton";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useUser } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
