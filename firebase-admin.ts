@@ -1,13 +1,17 @@
 import { initializeApp, getApps, App, getApp, cert, ServiceAccount } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import serviceKey from './service_key.json';
+
+// Ensure the service account is read from environment variables securely
+const serviceAccount: ServiceAccount = {
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'), // Ensure newlines are handled correctly
+};
 
 let app: App;
 
-// Ensure TypeScript understands the serviceKey shape
-const serviceAccount = serviceKey as ServiceAccount;
-
-if (getApps().length === 0) {
+// Check if Firebase Admin app is already initialized
+if (!getApps().length) {
   app = initializeApp({
     credential: cert(serviceAccount),
   });
