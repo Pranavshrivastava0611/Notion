@@ -50,10 +50,11 @@ function DeleteDocument() {
       </Button>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you sure you want to Delete ?</DialogTitle>
-          <DialogDescription>
-            This will delete the docuement and all it's content .
-          </DialogDescription>
+        <DialogTitle>{`Are you sure you want to Delete ?`}</DialogTitle>
+        <DialogDescription>
+          {`This will delete the document and all its content.`}
+        </DialogDescription>
+
         </DialogHeader>
         <DialogFooter className='sm:justify-end gap-2'>
           <Button

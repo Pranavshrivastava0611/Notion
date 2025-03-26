@@ -2,9 +2,7 @@
 import { auth } from "@clerk/nextjs/server";
 import RoomProvider from "@/components/RoomProvider";
 
-type Params = {
-  id : string
-}
+type Params = Promise<{id : string}>
 async function DocLayout(
   {
     children,
